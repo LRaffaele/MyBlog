@@ -1,0 +1,59 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: myblog
+
+  datasource:
+    url: jdbc:mariadb://localhost:3306/myblog?createDatabaseIfNotExist=true&autoReconnect=true&useSLL=false
+    username:
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      format_sql: true
+      dialect: org.hibernate.dialect.MariaDBDialect
+    show-sql: true
+    open-in-view: false
+
+logging:
+  level:
+    com.mailgun: trace
+    it.cgmconsulting.myblog: info
+    org.hibernate.orm.jdbc.bind: trace
+    org.springframework: info
+
+spring-doc:
+  swagger-ui:
+    enabled: true
+
+
+app:
+  # JWT Settings
+  jwtSecret: ThisIsTheSecretK3y!
+  jwtExpirationInSeconds: 36000
+  # Comma separated list of allowed origins
+  cors.allowedOrigins: \*   # chiamate possono partire da qualsiasi indirizzo IP
+
+  mail:
+    sender: abc@gmail.com
+    apiKey:
+    domain: mailgun.org
+
+  avatar:
+    size: 10240 #Espressa in byte
+    width: 100 #Espressa in pixel
+    height: 100
+    extensions: gif,jpg,jpeg,png
+
+  image:
+    path: /Users/Public/myblog/images/
+    #size: 102400
+    #width: 400
+    #height: 200
+    extensions: jpg, jpeg
+    #maxImages: 10
+
